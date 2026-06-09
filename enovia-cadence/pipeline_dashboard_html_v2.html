@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Pipeline — DS India · ENOVIA Pre-Sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{background:#EEF2F7;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif}
+    #root{min-height:100%}
+    a{text-decoration:none}
+    button{font-family:inherit;outline:none;cursor:pointer}
+    ::-webkit-scrollbar{width:6px;height:6px}
+    ::-webkit-scrollbar-track{background:#F0F4FA}
+    ::-webkit-scrollbar-thumb{background:#B0C4DA;border-radius:3px}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo, useEffect, useRef, Fragment } = React;
+
+    /* ─── Theme ──────────────────────────────────────────────── */
+    const C = {
+      bg:"#EEF2F7", surface:"#FFFFFF", surface2:"#F7F9FC",
+      header:"#FFFFFF", filterBar:"#FFFFFF",
+      border:"#D8E2EE", accent:"#0066CC",
+      text:"#1A2B3C", muted:"#5A6E83", mutedLight:"#94A3B8",
+      mono:"'IBM Plex Mono',monospace", sans:"'IBM Plex Sans',sans-serif",
+    };
+    const SC = {
+      Qualification:"#2563EB", Demo:"#7C3AED", POC:"#D97706",
+      Proposal:"#EA580C", Completed:"#16A34A", Closed:"#6B7280", "On-Hold":"#DC2626"
+    };
+    const REGIONS  = ["North","South","East","West","TBD"];
+    const STATUSES = ["Qualification","Demo","POC","Proposal","Completed","Closed","On-Hold"];
+    const DEPLOYS  = ["OP","OC","ANY"];
+    const EXCL     = ["Completed","Closed","On-Hold"];
+    const Q2       = ["Apr","May","Jun"];
+    const Q3       = ["Jul","Aug","Sep"];
+    const MON_IDX  = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+
+    /* ─── SVG Icons (inline — no CDN dependency) ─────────────── */
+    const Ico = ({size=16,color,style:s,d,children,vb="0 0 24 24"}) => (
+      <svg width={size} height={size} viewBox={vb} fill="none"
+           stroke={color||"currentColor"} strokeWidth="2"
+           strokeLinecap="round" strokeLinejoin="round" style={s}>
+        {children}
+      </svg>
+    );
+    const Upload      = ({size=16,style:s}) => <Ico size={size} style={s}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></Ico>;
+    const RefreshCw   = ({size=16,style:s}) => <Ico size={size} style={s}><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></Ico>;
+    const ChevronDown  = ({size=16,color,style:s}) => <Ico size={size} color={color} style={s}><polyline points="6 9 12 15 18 9"/></Ico>;
+    const ChevronRight = ({size=16,color,style:s}) => <Ico size={size} color={color} style={s}><polyline points="9 18 15 12 9 6"/></Ico>;
+    const X            = ({size=16,style:s}) => <Ico size={size} style={s}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></Ico>;
+    const AlertCircle  = ({size=16,style:s}) => <Ico size={size} style={s}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></Ico>;
+    const ExternalLink = ({size=16,style:s}) => <Ico size={size} style={s}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Ico>;
+    const LayoutGrid   = ({size=16,style:s}) => <Ico size={size} style={s}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></Ico>;
+    const LayoutList   = ({size=16,style:s}) => <Ico size={size} style={s}><rect x="3" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="6" x2="21" y2="6"/><line x1="14" y1="10" x2="21" y2="10"/><line x1="14" y1="17" x2="21" y2="17"/><line x1="14" y1="21" x2="21" y2="21"/></Ico>;
+
+    /* ─── Helpers ────────────────────────────────────────────── */
+    const MN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const daysAgo  = d => d ? Math.floor((Date.now() - new Date(d).getTime()) / 86400000) : null;
+    const fmtRel   = d => { const n = daysAgo(d); return n===null?"—":n===0?"Today":n===1?"Yesterday":`${n} days ago`; };
+    const fmtDate  = d => { if(!d)return"—"; const [y,m,dy]=d.split("-").map(Number); return `${String(dy).padStart(2,"0")} ${MN[m-1]} ${y}`; };
+    const fmtTarget= (m,y) => (m&&y) ? `${m} ${y}` : "TBD";
+    const fmtOpp   = (v,u) => v ? `${u==="EUR"?"€":"₹"}${v}` : null;
+
+    /* ─── Atoms ──────────────────────────────────────────────── */
+    function StatusPill({s}) {
+      const col = SC[s] || C.muted;
+      return <span style={{display:"inline-block",background:col+"1A",color:col,border:`1px solid ${col}44`,padding:"2px 9px",borderRadius:20,fontSize:11,fontWeight:600,whiteSpace:"nowrap"}}>{s||"—"}</span>;
+    }
+    function BrandTag({b}) {
+      return <span style={{display:"inline-block",background:"#EEF4FF",color:"#1D4ED8",border:"1px solid #BFDBFE",padding:"1px 6px",borderRadius:3,fontSize:10,fontWeight:500,marginRight:3,marginBottom:1,whiteSpace:"nowrap"}}>{b}</span>;
+    }
+    function DeployPill({m}) {
+      const col = {OC:"#16A34A",OP:"#D97706",ANY:"#6B7280"}[m] || C.muted;
+      return <span style={{display:"inline-block",background:col+"18",color:col,border:`1px solid ${col}44`,padding:"1px 6px",borderRadius:10,fontSize:10,fontWeight:600,whiteSpace:"nowrap"}}>{m||"—"}</span>;
+    }
+    function AIPill({s}) {
+      const col = {Open:"#EA580C",Closed:"#16A34A","In Progress":"#D97706"}[s] || C.muted;
+      return <span style={{display:"inline-block",background:col+"18",color:col,border:`1px solid ${col}44`,padding:"1px 7px",borderRadius:10,fontSize:10,fontWeight:600}}>{s}</span>;
+    }
+    function OpenBadge({n}) {
+      if(!n) return null;
+      return <span style={{display:"inline-block",background:"#EA580C",color:"#fff",borderRadius:20,padding:"0 6px",fontSize:10,fontWeight:700,marginLeft:5,lineHeight:"16px"}}>{n}</span>;
+    }
+    function Chip({label,active,onClick}) {
+      return <button onClick={onClick} style={{padding:"3px 10px",borderRadius:20,border:`1px solid ${active?"#93C5FD":C.border}`,background:active?"#DBEAFE":"#FFFFFF",color:active?"#1D4ED8":C.muted,fontSize:11,fontWeight:active?600:400,whiteSpace:"nowrap"}}>{label}</button>;
+    }
+    function Toast({msg,onClose}) {
+      useEffect(() => { const t = setTimeout(onClose,5000); return () => clearTimeout(t); }, [onClose]);
+      return <div style={{position:"fixed",bottom:20,right:20,zIndex:9999,background:"#DC2626",color:"#fff",padding:"10px 16px",borderRadius:6,display:"flex",alignItems:"center",gap:8,fontSize:13,boxShadow:"0 4px 20px rgba(0,0,0,.2)"}}>
+        <AlertCircle size={14}/>{msg}
+        <button onClick={onClose} style={{background:"none",border:"none",color:"#fff",display:"flex",marginLeft:6}}><X size={13}/></button>
+      </div>;
+    }
+
+    /* ─── Sessions Panel ─────────────────────────────────────── */
+    function SessionsPanel({a}) {
+      const ss = [...(a.sessions||[])].sort((x,y) => new Date(y.date)-new Date(x.date));
+      return <div>
+        <div style={{fontSize:10,fontWeight:700,color:C.muted,textTransform:"uppercase",letterSpacing:".08em",marginBottom:8}}>Session History · {a.accountName}</div>
+        {ss.map((s,i) => (
+          <div key={i} style={{borderLeft:`3px solid ${C.accent}`,paddingLeft:12,marginBottom:i<ss.length-1?12:0}}>
+            <div style={{fontSize:10,fontWeight:700,color:C.accent,fontFamily:C.mono,marginBottom:3}}>{fmtDate(s.date)}</div>
+            <div style={{fontSize:12,color:"#374151",lineHeight:1.65}}>{s.notes}</div>
+          </div>
+        ))}
+      </div>;
+    }
+
+    /* ─── Header ─────────────────────────────────────────────── */
+    function Header({meta,onLoad}) {
+      return <div style={{background:C.header,borderBottom:`1px solid ${C.border}`,padding:"12px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",boxShadow:"0 1px 4px rgba(0,0,0,.06)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <div style={{width:4,height:34,background:C.accent,borderRadius:2}}/>
+          <div>
+            <div style={{fontSize:17,fontWeight:600,color:C.text,letterSpacing:"-.01em"}}>Partner Pipeline</div>
+            <div style={{fontSize:11,color:C.muted,marginTop:1}}>DS India · ENOVIA Pre-Sales</div>
+          </div>
+        </div>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          {meta && <span style={{fontSize:11,color:C.muted,fontFamily:C.mono,background:"#F0F4FA",border:`1px solid ${C.border}`,padding:"3px 9px",borderRadius:4}}>Data as of: {meta.lastUpdated}</span>}
+          <button onClick={onLoad} title="Reload / change file" style={{background:"#FFFFFF",border:`1px solid ${C.border}`,borderRadius:4,padding:"5px 7px",color:C.muted,display:"flex",alignItems:"center"}}><RefreshCw size={12}/></button>
+          <button onClick={onLoad} style={{display:"inline-flex",alignItems:"center",gap:5,padding:"6px 14px",borderRadius:4,border:"none",background:C.accent,color:"#FFFFFF",fontSize:12,fontWeight:500}}><Upload size={12}/>Load JSON</button>
+        </div>
+      </div>;
+    }
+
+    /* ─── KPI Strip ──────────────────────────────────────────── */
+    function KPIStrip({k}) {
+      const items = [
+        ["Total Accounts", k.total,       C.text],
+        ["Pre-Sales Active", k.active,    "#1D4ED8"],
+        ["Open Actions", k.openActions,   "#C2410C"],
+        ["Q2 Targets", k.q2,              "#6D28D9"],
+        ["Q3 Targets", k.q3,              "#15803D"],
+      ];
+      return <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",borderBottom:`1px solid ${C.border}`}}>
+        {items.map(([label,value,color],i) => (
+          <div key={label} style={{background:C.surface,padding:"14px 22px",borderRight:i<4?`1px solid ${C.border}`:"none"}}>
+            <div style={{fontSize:10,color:C.muted,textTransform:"uppercase",letterSpacing:".08em",fontWeight:600,marginBottom:6}}>{label}</div>
+            <div style={{fontSize:30,fontWeight:700,color,lineHeight:1}}>{value}</div>
+          </div>
+        ))}
+      </div>;
+    }
+
+    /* ─── Filter Bar ─────────────────────────────────────────── */
+    function FilterBar({data,opts,pF,rF,cF,sF,tF,dF,view,any,tp,tr,tc,ts,tt,td,setView,clear}) {
+      const sep = <div style={{width:1,background:C.border,alignSelf:"stretch",margin:"2px 8px"}}/>;
+      const grp = (lbl,options,active,tog) => (
+        <div style={{display:"flex",alignItems:"center",gap:7,flexShrink:0}}>
+          <span style={{fontSize:9,fontWeight:700,color:"#1E40AF",textTransform:"uppercase",letterSpacing:".07em",background:"#DBEAFE",border:"1px solid #93C5FD",padding:"3px 8px",borderRadius:5,whiteSpace:"nowrap",flexShrink:0}}>{lbl}</span>
+          <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{options.map(o=><Chip key={o} label={o} active={active.has(o)} onClick={()=>tog(o)}/>)}</div>
+        </div>
+      );
+      return <div style={{position:"sticky",top:0,zIndex:20,background:C.filterBar,borderBottom:`1px solid ${C.border}`,padding:"10px 24px",overflowX:"auto",boxShadow:"0 2px 6px rgba(0,0,0,.05)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+          {grp("Partner", data.partners.map(p=>p.id), pF, tp)}
+          {sep}{grp("Region",   REGIONS,         rF, tr)}
+          {sep}{grp("City",     opts.cities,      cF, tc)}
+          {sep}{grp("Status",   STATUSES,         sF, ts)}
+          {sep}{grp("Target",   opts.targets,     tF, tt)}
+          {sep}{grp("Deploy",   DEPLOYS,          dF, td)}
+          <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
+            {any && <button onClick={clear} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:4,padding:"3px 10px",color:C.muted,fontSize:11,display:"flex",alignItems:"center",gap:3}}><X size={10}/>Clear</button>}
+            <div style={{display:"flex",border:`1px solid ${C.border}`,borderRadius:5,overflow:"hidden",background:"#F7F9FC"}}>
+              {[["table","Table"],["cards","Cards"]].map(([v,lbl]) => (
+                <button key={v} onClick={()=>setView(v)} style={{padding:"5px 11px",border:"none",background:view===v?C.accent:"transparent",color:view===v?"#fff":C.muted,display:"flex",alignItems:"center",gap:4,fontSize:11,fontWeight:view===v?600:400}}>
+                  {v==="table"?<LayoutList size={12}/>:<LayoutGrid size={12}/>}{lbl}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>;
+    }
+
+    /* ─── Table View ─────────────────────────────────────────── */
+    function TableView({accounts,openMap,expanded,setExpanded}) {
+      const TH = {padding:"8px 10px",textAlign:"left",fontSize:10,fontWeight:700,color:"#4A5568",textTransform:"uppercase",letterSpacing:".07em",background:"#F0F4FA",borderBottom:`1px solid ${C.border}`,whiteSpace:"nowrap"};
+      const td = (ex={}) => ({padding:"7px 10px",borderBottom:`1px solid ${C.border}`,...ex});
+      const toggle = id => setExpanded(p => { const n=new Set(p); n.has(id)?n.delete(id):n.add(id); return n; });
+      return <div style={{overflowX:"auto",border:`1px solid ${C.border}`,borderRadius:7,boxShadow:"0 1px 4px rgba(0,0,0,.06)"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:1050}}>
+          <thead>
+            <tr>{["Account","Partner","Region","City","Brand","Status","Target","Opp Value","Deployment","Competition","Last Discussed"].map(h=><th key={h} style={TH}>{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {accounts.length===0
+              ? <tr><td colSpan={10} style={{padding:36,textAlign:"center",color:C.muted,fontSize:13,background:C.surface}}>No accounts match the current filters.</td></tr>
+              : accounts.map((a,idx) => {
+                  const exp  = expanded.has(a.id);
+                  const oc   = openMap[a.id]||0;
+                  const days = daysAgo(a.lastDiscussed);
+                  const stale= days!==null && days>21;
+                  const opp  = fmtOpp(a.oppValue, a.oppValueUOM);
+                  const bg   = exp?"#EEF4FF":idx%2===0?C.surface:C.surface2;
+                  return <Fragment key={a.id}>
+                    <tr style={{background:bg,cursor:"pointer"}} onClick={()=>toggle(a.id)}>
+                      <td style={td()}>
+                        <div style={{display:"flex",alignItems:"center",gap:5}}>
+                          <span style={{color:C.accent,display:"flex",flexShrink:0}}>{exp?<ChevronDown size={13}/>:<ChevronRight size={13}/>}</span>
+                          {a.accountURL
+                            ? <a href={a.accountURL} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} style={{color:"#1D4ED8",fontWeight:600,fontSize:13,display:"flex",alignItems:"center",gap:3}}>{a.accountName}<ExternalLink size={9} style={{color:C.mutedLight}}/></a>
+                            : <span style={{color:C.text,fontWeight:600,fontSize:13}}>{a.accountName}</span>}
+                          <OpenBadge n={oc}/>
+                        </div>
+                      </td>
+                      <td style={td({fontSize:11,color:C.accent,fontFamily:C.mono,fontWeight:600})}>{a.partner}</td>
+                      <td style={td({fontSize:12,color:C.text})}>{a.region||"—"}</td>
+                      <td style={td({fontSize:12,color:C.text})}>{a.city||"—"}</td>
+                      <td style={td()}><div style={{display:"flex",flexWrap:"wrap",gap:2}}>{(a.brand||[]).map(b=><BrandTag key={b} b={b}/>)}</div></td>
+                      <td style={td()}><StatusPill s={a.currentStatus}/></td>
+                      <td style={td({fontSize:11,color:C.muted,fontFamily:C.mono,whiteSpace:"nowrap"})}>{fmtTarget(a.targetMonth,a.targetYear)}</td>
+                      <td style={td()}>
+                        {opp
+                          ? <span style={{fontSize:13,fontWeight:700,color:"#15803D",fontFamily:C.mono}}>{opp}<span style={{fontSize:9,color:C.mutedLight,marginLeft:3}}>{a.oppValueUOM}</span></span>
+                          : <span style={{color:C.mutedLight,fontSize:11}}>TBD</span>}
+                      </td>
+                      <td style={td()}><DeployPill m={a.deploymentModel}/></td>
+                      <td style={td({fontSize:12,color:a.competition?"#B91C1C":C.mutedLight})}>{a.competition||"—"}</td>
+                      <td style={td({fontSize:11,color:stale?"#B45309":C.muted,fontFamily:C.mono,whiteSpace:"nowrap",fontWeight:stale?600:400})}>{fmtRel(a.lastDiscussed)}</td>
+                    </tr>
+                    {exp && <tr style={{background:"#F0F8FF",borderBottom:`1px solid ${C.border}`}}>
+                      <td colSpan={11} style={{padding:"14px 20px 14px 38px"}}><SessionsPanel a={a}/></td>
+                    </tr>}
+                  </Fragment>;
+                })}
+          </tbody>
+        </table>
+      </div>;
+    }
+
+    /* ─── Cards View ─────────────────────────────────────────── */
+    function CardsView({accounts,openMap,expanded,setExpanded}) {
+      if(!accounts.length) return <div style={{textAlign:"center",color:C.muted,padding:40,fontSize:13}}>No accounts match the current filters.</div>;
+      const toggle = id => setExpanded(p => { const n=new Set(p); n.has(id)?n.delete(id):n.add(id); return n; });
+      return <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))",gap:14}}>
+        {accounts.map(a => {
+          const exp   = expanded.has(a.id);
+          const oc    = openMap[a.id]||0;
+          const days  = daysAgo(a.lastDiscussed);
+          const stale = days!==null && days>21;
+          const opp   = fmtOpp(a.oppValue, a.oppValueUOM);
+          return <div key={a.id} onClick={()=>toggle(a.id)} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:8,padding:16,cursor:"pointer",boxShadow:"0 1px 4px rgba(0,0,0,.05)"}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8,gap:8}}>
+              <div style={{minWidth:0}}>
+                {a.accountURL
+                  ? <a href={a.accountURL} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} style={{color:"#1D4ED8",fontWeight:700,fontSize:14}}>{a.accountName}<ExternalLink size={10} style={{marginLeft:3,color:C.mutedLight,verticalAlign:"middle"}}/></a>
+                  : <span style={{color:C.text,fontWeight:700,fontSize:14}}>{a.accountName}</span>}
+                <span style={{display:"inline-block",background:"#DBEAFE",color:"#1E40AF",border:"1px solid #93C5FD",padding:"0 7px",borderRadius:4,fontSize:10,fontWeight:700,marginLeft:8,verticalAlign:"middle"}}>{a.partner}</span>
+              </div>
+              <div style={{display:"flex",gap:4,flexShrink:0,flexWrap:"wrap",justifyContent:"flex-end"}}><StatusPill s={a.currentStatus}/><DeployPill m={a.deploymentModel}/></div>
+            </div>
+            <div style={{fontSize:11,color:C.muted,marginBottom:6}}>{a.region||"—"} / {a.city||"—"} · {fmtTarget(a.targetMonth,a.targetYear)}</div>
+            <div style={{display:"flex",flexWrap:"wrap",gap:3,marginBottom:7}}>{(a.brand||[]).map(b=><BrandTag key={b} b={b}/>)}</div>
+            {opp && <div style={{fontSize:15,fontWeight:700,color:"#15803D",fontFamily:C.mono,marginBottom:4}}>{opp} <span style={{fontSize:10,color:C.mutedLight,fontWeight:400}}>{a.oppValueUOM}</span></div>}
+            {a.competition && <div style={{fontSize:11,color:"#B91C1C",marginBottom:5,fontWeight:500}}>vs. {a.competition}</div>}
+            <div style={{fontSize:11,color:"#4B5563",lineHeight:1.55,marginBottom:9,display:"-webkit-box",WebkitLineClamp:exp?"unset":2,WebkitBoxOrient:"vertical",overflow:exp?"visible":"hidden"}}>{a.latestUpdate||"—"}</div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",borderTop:`1px solid ${C.border}`,paddingTop:8}}>
+              <span style={{fontSize:10,color:stale?"#B45309":C.muted,fontFamily:C.mono,fontWeight:stale?600:400}}>Last discussed: {fmtRel(a.lastDiscussed)}</span>
+              {oc>0 && <span style={{background:"#EA580C",color:"#fff",borderRadius:10,padding:"1px 8px",fontSize:10,fontWeight:700}}>{oc} open action{oc>1?"s":""}</span>}
+            </div>
+            {exp && <div style={{marginTop:11,borderTop:`1px solid ${C.border}`,paddingTop:11}}><SessionsPanel a={a}/></div>}
+          </div>;
+        })}
+      </div>;
+    }
+
+    /* ─── Action Items Panel ─────────────────────────────────── */
+    function ActionPanel({items,open,toggle,showAll,toggleAll,groups,toggleGroup}) {
+      const today     = new Date();
+      const display   = showAll ? items : items.filter(i=>i.status==="Open");
+      const openCount = items.filter(i=>i.status==="Open").length;
+      const grouped   = useMemo(() => display.reduce((acc,ai)=>{ (acc[ai.partner]||(acc[ai.partner]=[])).push(ai); return acc; }, {}), [display]);
+      const partners  = Object.keys(grouped).sort();
+      const isOD      = ai => ai.status==="Open" && ai.deadline && new Date(ai.deadline)<today;
+      const TH = {padding:"7px 10px",textAlign:"left",fontSize:9,fontWeight:700,color:"#4A5568",textTransform:"uppercase",letterSpacing:".07em",background:"#F0F4FA",borderBottom:`1px solid ${C.border}`,whiteSpace:"nowrap"};
+      return <div style={{margin:"0 24px 28px",border:`1px solid ${C.border}`,borderRadius:8,overflow:"hidden",boxShadow:"0 1px 4px rgba(0,0,0,.06)"}}>
+        <div onClick={toggle} style={{background:C.surface,padding:"10px 18px",display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",borderBottom:open?`1px solid ${C.border}`:"none"}}>
+          <div style={{display:"flex",alignItems:"center",gap:9}}>
+            {open?<ChevronDown size={15} color={C.muted}/>:<ChevronRight size={15} color={C.muted}/>}
+            <span style={{fontWeight:700,fontSize:14,color:C.text}}>Action Items</span>
+            <span style={{background:"#EA580C",color:"#fff",borderRadius:10,padding:"1px 9px",fontSize:11,fontWeight:700}}>{openCount}</span>
+          </div>
+          {open && <button onClick={e=>{e.stopPropagation();toggleAll();}} style={{background:"#F7F9FC",border:`1px solid ${C.border}`,borderRadius:4,padding:"3px 11px",color:C.muted,fontSize:11,fontWeight:500}}>{showAll?"Open Only":"Show All"}</button>}
+        </div>
+        {open && <div>
+          {!display.length
+            ? <div style={{padding:24,textAlign:"center",color:C.muted,fontSize:13,background:C.surface}}>No action items to display.</div>
+            : partners.map(partner => (
+                <div key={partner}>
+                  <div onClick={()=>toggleGroup(partner)} style={{background:"#F0F4FA",padding:"6px 18px",display:"flex",alignItems:"center",gap:7,cursor:"pointer",borderTop:`1px solid ${C.border}`,borderBottom:`1px solid ${C.border}`}}>
+                    {groups.has(partner)?<ChevronDown size={12} color={C.muted}/>:<ChevronRight size={12} color={C.muted}/>}
+                    <span style={{fontSize:11,fontWeight:700,color:C.accent,fontFamily:C.mono}}>{partner}</span>
+                    <span style={{fontSize:10,color:C.muted}}>({grouped[partner].length} item{grouped[partner].length>1?"s":""})</span>
+                  </div>
+                  {groups.has(partner) && <table style={{width:"100%",borderCollapse:"collapse"}}>
+                    <thead><tr>{["Account","Action","Owner","Deadline","Status"].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+                    <tbody>
+                      {grouped[partner].map((ai,i) => {
+                        const od     = isOD(ai);
+                        const closed = ai.status==="Closed";
+                        return <tr key={ai.id} style={{background:od?"#FEF2F2":i%2===0?C.surface:C.surface2,borderBottom:`1px solid ${C.border}`,opacity:closed?.5:1}}>
+                          <td style={{padding:"7px 10px",fontSize:12,fontWeight:600,color:C.text,whiteSpace:"nowrap"}}>{ai.accountName}</td>
+                          <td style={{padding:"7px 10px",fontSize:12,color:closed?C.muted:C.text}}>{ai.action}</td>
+                          <td style={{padding:"7px 10px",fontSize:11,color:C.muted,whiteSpace:"nowrap"}}>{ai.owner}</td>
+                          <td style={{padding:"7px 10px",fontSize:10,fontFamily:C.mono,color:od?"#DC2626":C.muted,whiteSpace:"nowrap",fontWeight:od?700:400}}>{ai.deadline?fmtDate(ai.deadline):"—"}</td>
+                          <td style={{padding:"7px 10px"}}><AIPill s={ai.status}/></td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>}
+                </div>
+              ))}
+        </div>}
+      </div>;
+    }
+
+    /* ─── App ────────────────────────────────────────────────── */
+    function App() {
+      const [data,       setData]       = useState(null);
+      const [ready,      setReady]      = useState(false);
+      const [toast,      setToast]      = useState(null);
+      const fileRef = useRef(null);
+
+      const [pF, setPF] = useState(new Set());
+      const [rF, setRF] = useState(new Set());
+      const [cF, setCF] = useState(new Set());
+      const [sF, setSF] = useState(new Set());
+      const [tF, setTF] = useState(new Set());
+      const [dF, setDF] = useState(new Set());
+      const [view,        setView]       = useState("table");
+      const [expanded,    setExpanded]   = useState(new Set());
+      const [actionOpen,  setActionOpen] = useState(true);
+      const [showAll,     setShowAll]    = useState(false);
+      const [groups,      setGroups]     = useState(new Set());
+
+      /* Load from localStorage on startup */
+      useEffect(() => {
+        try {
+          const stored = localStorage.getItem("pipeline_data");
+          if(stored) {
+            const parsed = JSON.parse(stored);
+            setData(parsed);
+            setGroups(new Set(parsed.partners?.map(p=>p.id) || []));
+          }
+        } catch(e) { /* silent */ }
+        setReady(true);
+      }, []);
+
+      /* File upload handler */
+      const handleFile = e => {
+        const file = e.target.files?.[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+          try {
+            const parsed = JSON.parse(ev.target.result);
+            localStorage.setItem("pipeline_data", JSON.stringify(parsed));
+            setData(parsed);
+            setPF(new Set()); setRF(new Set()); setCF(new Set());
+            setSF(new Set()); setTF(new Set()); setDF(new Set());
+            setExpanded(new Set());
+            setGroups(new Set(parsed.partners?.map(p=>p.id) || []));
+          } catch(err) {
+            setToast("Invalid JSON file. Please check the file and try again.");
+          }
+        };
+        reader.onerror = () => setToast("Failed to read file. Please try again.");
+        reader.readAsText(file);
+        e.target.value = "";
+      };
+
+      const tog = (setter,v) => setter(p => { const n=new Set(p); n.has(v)?n.delete(v):n.add(v); return n; });
+      const anyFilter = [pF,rF,cF,sF,tF,dF].some(f=>f.size>0);
+      const clearFilters = () => { setPF(new Set()); setRF(new Set()); setCF(new Set()); setSF(new Set()); setTF(new Set()); setDF(new Set()); };
+
+      const opts = useMemo(() => {
+        if(!data) return { cities:[], targets:[] };
+        const cities  = [...new Set(data.accounts.map(a=>a.city).filter(Boolean))].sort();
+        const targets = [...new Set(data.accounts.filter(a=>a.targetMonth&&a.targetYear).map(a=>`${a.targetMonth} ${a.targetYear}`))]
+          .sort((a,b) => { const[am,ay]=a.split(" "); const[bm,by]=b.split(" "); return (+ay-+by)||(MON_IDX[am]-MON_IDX[bm]); });
+        return { cities, targets };
+      }, [data]);
+
+      const filteredAccounts = useMemo(() => {
+        if(!data) return [];
+        return data.accounts.filter(a => {
+          if(pF.size && !pF.has(a.partner))         return false;
+          if(rF.size && !rF.has(a.region))           return false;
+          if(cF.size && !cF.has(a.city))             return false;
+          if(sF.size && !sF.has(a.currentStatus))    return false;
+          if(dF.size && !dF.has(a.deploymentModel))  return false;
+          if(tF.size) {
+            const t = a.targetMonth&&a.targetYear ? `${a.targetMonth} ${a.targetYear}` : null;
+            if(!t || !tF.has(t)) return false;
+          }
+          return true;
+        });
+      }, [data, pF, rF, cF, sF, tF, dF]);
+
+      const filteredActions = useMemo(() => {
+        if(!data) return [];
+        if(!anyFilter) return data.actionItems;
+        const ids = new Set(filteredAccounts.map(a=>a.id));
+        return data.actionItems.filter(ai=>ids.has(ai.accountId));
+      }, [data, filteredAccounts, anyFilter]);
+
+      const kpis = useMemo(() => ({
+        total:       filteredAccounts.length,
+        active:      filteredAccounts.filter(a=>!EXCL.includes(a.currentStatus)).length,
+        openActions: filteredActions.filter(ai=>ai.status==="Open").length,
+        q2:          filteredAccounts.filter(a=>Q2.includes(a.targetMonth)&&a.targetYear===2026).length,
+        q3:          filteredAccounts.filter(a=>Q3.includes(a.targetMonth)&&a.targetYear===2026).length,
+      }), [filteredAccounts, filteredActions]);
+
+      const openMap = useMemo(() => {
+        if(!data) return {};
+        return data.actionItems.reduce((acc,ai) => {
+          if(ai.status==="Open") acc[ai.accountId] = (acc[ai.accountId]||0)+1;
+          return acc;
+        }, {});
+      }, [data]);
+
+      if(!ready) return <div style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",color:C.muted}}>Loading…</div>;
+
+      return <div style={{background:C.bg,minHeight:"100vh",color:C.text,minWidth:1024}}>
+        {toast && <Toast msg={toast} onClose={()=>setToast(null)}/>}
+        <input ref={fileRef} type="file" accept=".json" style={{display:"none"}} onChange={handleFile}/>
+
+        <Header meta={data?.meta} onLoad={()=>fileRef.current?.click()}/>
+
+        {!data
+          ? <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",minHeight:"calc(100vh - 60px)",gap:14}}>
+              <div style={{fontSize:18,fontWeight:600,color:C.text}}>No pipeline data loaded</div>
+              <div style={{fontSize:13,color:C.muted}}>Load your pipeline JSON file to populate the dashboard</div>
+              <button onClick={()=>fileRef.current?.click()} style={{display:"flex",alignItems:"center",gap:7,padding:"10px 22px",borderRadius:5,border:"none",background:C.accent,color:"#fff",fontSize:13,fontWeight:500}}><Upload size={15}/>Load JSON</button>
+            </div>
+          : <>
+              <KPIStrip k={kpis}/>
+              <FilterBar data={data} opts={opts}
+                pF={pF} rF={rF} cF={cF} sF={sF} tF={tF} dF={dF}
+                view={view} any={anyFilter}
+                tp={v=>tog(setPF,v)} tr={v=>tog(setRF,v)}
+                tc={v=>tog(setCF,v)} ts={v=>tog(setSF,v)}
+                tt={v=>tog(setTF,v)} td={v=>tog(setDF,v)}
+                setView={setView} clear={clearFilters}/>
+              <div style={{padding:"18px 24px"}}>
+                {view==="table"
+                  ? <TableView accounts={filteredAccounts} openMap={openMap} expanded={expanded} setExpanded={setExpanded}/>
+                  : <CardsView accounts={filteredAccounts} openMap={openMap} expanded={expanded} setExpanded={setExpanded}/>}
+              </div>
+              <ActionPanel items={filteredActions}
+                open={actionOpen} toggle={()=>setActionOpen(p=>!p)}
+                showAll={showAll} toggleAll={()=>setShowAll(p=>!p)}
+                groups={groups} toggleGroup={g=>tog(setGroups,g)}/>
+            </>}
+      </div>;
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
