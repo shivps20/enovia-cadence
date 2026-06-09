@@ -3,7 +3,7 @@ json_to_csv.py — Export master pipeline JSON to CSV files.
 
 Generates three CSVs from the master pipeline JSON:
   partners.csv      — one row per contact (partner fields repeated)
-  accounts.csv      — one row per account  (brand array pipe-joined; sessions excluded)
+  accounts.csv      — one row per account  (brand pipe-joined; sessions as compact JSON string)
   action_items.csv  — one row per action item (flat)
 
 Usage:
@@ -57,12 +57,14 @@ def flatten_partners(partners: list) -> list[dict]:
 def flatten_accounts(accounts: list) -> list[dict]:
     """
     One row per account.
-    - brand      : pipe-joined list  (e.g. "ENOVIA|DELMIA")
-    - sessions   : excluded (latestUpdate + lastDiscussed carry the summary)
+    - brand    : pipe-joined list  (e.g. "ENOVIA|DELMIA")
+    - sessions : serialised as a compact JSON string so all session data is
+                 preserved in a single cell; parse back with json.loads().
     - Null values: written as empty string
     """
     rows = []
     for a in accounts:
+        sessions = a.get("sessions") or []
         row = {
             "id":                 a.get("id", ""),
             "partner":            a.get("partner", ""),
@@ -82,7 +84,7 @@ def flatten_accounts(accounts: list) -> list[dict]:
             "competition":        a.get("competition") or "",
             "latestUpdate":       a.get("latestUpdate", ""),
             "lastDiscussed":      a.get("lastDiscussed", ""),
-            "sessionCount":       len(a.get("sessions") or []),
+            "sessions":           json.dumps(sessions, ensure_ascii=False) if sessions else "",
         }
         rows.append(row)
     return rows
