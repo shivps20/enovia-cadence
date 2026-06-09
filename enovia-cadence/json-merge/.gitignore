@@ -1,0 +1,4 @@
+# Pipeline data files — not tracked in git
+master_data_v*.json
+*_delta_*.json
+delta_schema_template.json
