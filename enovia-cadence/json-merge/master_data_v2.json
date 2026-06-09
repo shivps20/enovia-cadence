@@ -1,0 +1,1088 @@
+{
+  "meta": {
+    "version": "1.0",
+    "lastUpdated": "2026-06-08",
+    "inrUnit": "Lakhs",
+    "eurUnit": "Thousands"
+  },
+
+  "partners": [
+    {
+      "id": "TTL",
+      "fullName": "Tata Technologies Limited",
+      "cadence": "Weekly",
+      "contacts": [
+        {
+          "name": "Soham Vader",
+          "email": "soham.vader@tatatechnologies.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["West"]
+        },
+        {
+          "name": "Prasanth Chowdary",
+          "email": "prasanth.chowdary@tatatechnologies.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["South"]
+        },
+        {
+          "name": "Amit Mitroo",
+          "email": "amit.mitroo@tatatechnologies.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["North"]
+        }
+      ]
+    },
+    {
+      "id": "EDS",
+      "fullName": "EDST West",
+      "cadence": "Weekly",
+      "contacts": [
+        {
+          "name": "Chandrakant",
+          "email": "chandrakant@edst.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["West"]
+        },
+        {
+          "name": "Panjab Borkar",
+          "email": "panjab.borkar@edst.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["West"]
+        }
+      ]
+    },
+    {
+      "id": "ALTEM",
+      "fullName": "ALTEM",
+      "cadence": "Bi-Weekly",
+      "contacts": [
+        {
+          "name": "Suraj Kadam",
+          "email": "suraj.kadam@altem.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["West", "North"]
+        },
+        {
+          "name": "Yash Satpute",
+          "email": "yash.satpute@altem.com",
+          "mobile": "+91-XXXXXXXXXX",
+          "supportedRegions": ["West", "South"]
+        }
+      ]
+    },
+    {
+      "id": "SOLIZE",
+      "fullName": "SOLIZE",
+      "cadence": "TBD",
+      "contacts": []
+    },
+    {
+      "id": "VIAS",
+      "fullName": "VIAS",
+      "cadence": "TBD",
+      "contacts": []
+    }
+  ],
+
+  "accounts": [
+    {
+      "id": "TTL-001",
+      "partner": "TTL",
+      "accountName": "Varroc",
+      "accountURL": "https://www.varroc.com",
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Sahil",
+      "techOwner": "Soham Vader",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "Workshop for Lightning Division pending. Org transition delaying stakeholders. ALC renewal + 22X→26X upgrade and attribute creation also in scope.",
+      "lastDiscussed": "2026-05-19",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "Workshop planned for Lightning Division. Org transition causing stakeholder unavailability; expected to stabilize by end of May. ALC renewal (lapsed since Mar 2026), 22X→26X upgrade, and attribute creation running in parallel. 60 additional users on KTIA site already under consideration. Q3 target."
+        }
+      ]
+    },
+    {
+      "id": "TTL-002",
+      "partner": "TTL",
+      "accountName": "KSPG Automotive",
+      "accountURL": "https://www.kspg.com",
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Sahil",
+      "techOwner": "Soham Vader",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "~30–40 users. 3DExperience workshop to be scheduled via Sahil. German team offloading projects to India. Parallel KATYA VFi RFP looks positive for Q2.",
+      "lastDiscussed": "2026-05-19",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "~30–40 users; requirement started with PM but expanding to unified enterprise platform. Multiple siloed tools in use — consolidation objective. Manish and Sahil co-visited; workshop agreed. Existing SMRT/V6 managed by German team facing high attrition; India ops expanding. Parallel: KATYA VFi RFP (positive for Q2) + Kayisa VFi team requesting basic quote for PCS + MDG (Hyundai-driven). Scope too wide for Q2 — Q3 target."
+        }
+      ]
+    },
+    {
+      "id": "TTL-003",
+      "partner": "TTL",
+      "accountName": "Atlas Copco",
+      "accountURL": "https://www.atlascopco.com",
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Sahil",
+      "techOwner": "Soham Vader",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "No customer engagement yet. Qualification stage. Update expected next cadence.",
+      "lastDiscussed": "2026-05-19",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "No customer meeting yet. Qualification stage only. Soham Vader to provide update in next session."
+        }
+      ]
+    },
+    {
+      "id": "TTL-004",
+      "partner": "TTL",
+      "accountName": "HUF India Pvt Ltd",
+      "accountURL": "https://www.huf-group.com",
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Sahil",
+      "techOwner": "Soham Vader",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "No customer engagement yet. Qualification stage. Update expected next cadence.",
+      "lastDiscussed": "2026-05-19",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "No customer meeting yet. Qualification stage only. Soham Vader to provide update in next session."
+        }
+      ]
+    },
+    {
+      "id": "TTL-005",
+      "partner": "TTL",
+      "accountName": "Suspa",
+      "accountURL": "https://www.suspa.com",
+      "city": "Chennai",
+      "region": "South",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Prasanth Chowdary",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Completed",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": null,
+      "latestUpdate": "Existing account in hypercare. User resistance + high attrition making training ineffective. Focus is stabilization, not expansion.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "Existing deployment in stabilization mode. Challenges: (1) User mindset resistance; (2) High attrition — trained users keep leaving; (3) Production timelines consuming capacity meant for adoption. Prasanth to visit Chennai, meet Mr. Sehru in person; Manoj to join online."
+        },
+        {
+          "date": "2026-05-26",
+          "notes": "Customer meeting planned this week to confirm go-forward engagement plan."
+        }
+      ]
+    },
+    {
+      "id": "TTL-006",
+      "partner": "TTL",
+      "accountName": "Teneco Automotive",
+      "accountURL": "https://www.tenneco.com",
+      "city": "Chennai",
+      "region": "South",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Prasanth Chowdary",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "Small deal — NetWipes base/reuse only. Customer has no PDM system. Meeting planned this week to align on demo scope and timeline.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "Customer not yet confirmed meeting/demo slot. Prasanth actively chasing. Q2 June target maintained."
+        },
+        {
+          "date": "2026-05-26",
+          "notes": "Small deal: NetWipes base/reuse only. Customer has no PDM system. Meeting missed last week due to partner sales kickoff. Meeting planned this week — align on demo scope, requirements, and timeline. Q2 target maintained."
+        }
+      ]
+    },
+    {
+      "id": "TTL-007",
+      "partner": "TTL",
+      "accountName": "Grindwell Norton",
+      "accountURL": "https://www.grindwellnorton.com",
+      "city": "Chennai",
+      "region": "South",
+      "partnerSalesOwner": "Joe / Rashakar",
+      "techOwner": "Prasanth Chowdary",
+      "brand": ["ENOVIA", "DELMIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": "56L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "OC",
+      "competition": "Siemens",
+      "latestUpdate": "Proposal submitted. ENOVIA+Delmia bundle strategy. DS Dir Deepak–Grindwell Dir management-level call not yet done. Q2 closure target at risk.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "Proposal submitted. Siemens Delmia also evaluated — DS strategy: bundle ENOVIA+Delmia in single commercial. DS Director Deepak personally close with Grindwell Director — Rashakar to connect them for management-level push. Q2 target."
+        },
+        {
+          "date": "2026-05-26",
+          "notes": "No fresh update. Rashakar–Deepak call not yet done. Cloud ₹56L / On-Prem ₹76L confirmed. Prasanth to push Joe + Rashakar to expedite management call. Q2 closure target maintained."
+        }
+      ]
+    },
+    {
+      "id": "TTL-008",
+      "partner": "TTL",
+      "accountName": "Titan Engineering",
+      "accountURL": "https://www.titanengineering.in",
+      "city": "Chennai",
+      "region": "South",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Prasanth Chowdary",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "NDA received from customer; DS legal reviewing. Delmia/Robotics discussion done. ENOVIA exploratory not yet started — target mid-June. Moved to Q3.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "NDA not yet signed — customer side delay. ENOVIA exploratory stage not started; relevant stakeholder not yet connected. NDA is the gate before any data sharing or discovery. June target tentative."
+        },
+        {
+          "date": "2026-05-26",
+          "notes": "NDA received; DS legal currently reviewing. Delmia/Robotics discussion completed during Titan site visit. ENOVIA exploratory could not start — stakeholder unavailable. Timeline moved to Q3; target to complete exploratory + initial demos by mid-June."
+        }
+      ]
+    },
+    {
+      "id": "TTL-009",
+      "partner": "TTL",
+      "accountName": "Titan Watches",
+      "accountURL": "https://www.titancorporation.com",
+      "city": "Chennai",
+      "region": "South",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Prasanth Chowdary",
+      "brand": ["ENOVIA", "CAD", "NetWipes"],
+      "currentStatus": "Demo",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OC",
+      "competition": null,
+      "latestUpdate": "Two demo levels completed. Management review in progress. CAD + NetWipes primary; ENOVIA foundational. Shiv to join next high-level call.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-19",
+          "notes": "Two engagement levels done: (1) Titan site visit; (2) Titan team at DS/partner office — Rajiv, Ganesh, Gopal present. End-to-end PLM showcased with AI/generative modeling. Cloud/SaaS positioned as primary. Srini Vasan (Director, Watches Division) confirmed investment readiness. Management approval awaited. Legacy data migration in scope (Umashankar). Q2-end/Sep target."
+        },
+        {
+          "date": "2026-05-26",
+          "notes": "Customer mail received 28 May — solution under management review. CAD + NetWipes are primary components; ENOVIA positioning is foundational (Gopal's framing). ENOVIA portion small and still undecided. Shiv to be included in next high-level call."
+        }
+      ]
+    },
+    {
+      "id": "TTL-010",
+      "partner": "TTL",
+      "accountName": "Ushin",
+      "accountURL": "https://www.ushin.co.jp",
+      "city": "Gurgaon",
+      "region": "North",
+      "partnerSalesOwner": "Amit Mitroo",
+      "techOwner": "Amit Mitroo",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "Meeting with design manager scheduled 27 May. Update to follow in next cadence.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-26",
+          "notes": "Meeting with design manager scheduled for 27 May. Update to be shared in next cadence call."
+        }
+      ]
+    },
+    {
+      "id": "TTL-011",
+      "partner": "TTL",
+      "accountName": "JBM Neel Metal",
+      "accountURL": "https://www.jbmgroup.com",
+      "city": "Gurgaon",
+      "region": "North",
+      "partnerSalesOwner": "Mohit",
+      "techOwner": "Amit Mitroo",
+      "brand": ["ENOVIA"],
+      "currentStatus": "On-Hold",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "On hold. Implementation cost shared with sales. User count not confirmed. One more customer call before pipeline removal decision.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-26",
+          "notes": "Implementation cost estimated and shared with Mohit (sales). User count still not confirmed. One more customer call to be done before deciding to keep or remove from active pipeline."
+        }
+      ]
+    },
+    {
+      "id": "TTL-012",
+      "partner": "TTL",
+      "accountName": "Polyplastic",
+      "accountURL": null,
+      "city": "Gurgaon",
+      "region": "North",
+      "partnerSalesOwner": "Amit Mitroo",
+      "techOwner": "Amit Mitroo",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": null,
+      "targetYear": 2027,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OC",
+      "competition": null,
+      "latestUpdate": "Cloud deal. 2 roles for BOM management. Proposal shared. FY27 next-year timeline.",
+      "lastDiscussed": "2026-05-26",
+      "sessions": [
+        {
+          "date": "2026-05-26",
+          "notes": "Cloud deal. 2 BOM management roles. Proposal shared with customer. Timeline is next year (FY27)."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-001",
+      "partner": "ALTEM",
+      "accountName": "Tak Technologies",
+      "accountURL": null,
+      "city": "Delhi",
+      "region": "North",
+      "partnerSalesOwner": "Digpal",
+      "techOwner": "Nagarjan",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": "25L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "OC",
+      "competition": null,
+      "latestUpdate": "Cloud proposal ~₹25L submitted. BPW missing in cloud BOM. On-prem proposal submitted by sales without tech involvement — Minutus not yet engaged for effort estimate. Defense projects may influence deployment decision.",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "Two options: on-cloud (~₹25L) and on-premise. Cloud BOM prepared with Abyss input. BPW (Business Process Worker) missing — at least 1 BPW required for 8–10 BPO users to enable dashboarding and governance. On-prem proposal submitted by Digpal (sales) without ALTEM tech team or Minutus input — flagged as red flag by Shiv. On-prem estimate: 2–3 months, 2 Minutus resources = ~₹18L. Defense project context may influence deployment choice. Next: Suraj to obtain on-prem proposal, loop in Minutus, get Abyss feedback."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-002",
+      "partner": "ALTEM",
+      "accountName": "Nibe Limited",
+      "accountURL": "https://www.nibegroup.com",
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Suraj Mamidwar",
+      "techOwner": "Yash Satpute",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Qualification",
+      "targetMonth": "Sep",
+      "targetYear": 2026,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "Initial discovery call done in Feb 2026. Full quarter gap — context reset needed. Pain: PDM + CHG via Excel/email. Shiv or Manish Jha must attend next customer meeting.",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "Primary discovery call done Feb 2026. Full quarter elapsed — context needs reset. Pain identified: PDM (document/part management) and CHG (change management) currently via Excel and email. Must be consultative engagement — no license/demo push. Senior DS person (Shiv or Manish Jha) to attend next customer meeting. Suraj Mamidwar in Chakan region but occupied — Yash to coordinate scheduling. Customer available after 8 Jun."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-003",
+      "partner": "ALTEM",
+      "accountName": "AirPace",
+      "accountURL": null,
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Bridgenser (DS) / Yash (ALTEM)",
+      "techOwner": "Yash Satpute",
+      "brand": ["ENOVIA", "CATIA VFi"],
+      "currentStatus": "Qualification",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": null,
+      "latestUpdate": "Urban Air Mobility startup. No PLM — ECR/ECM via Excel. Phase 1 scope: PDM + CHG + PM; 20–50 users TBC. DS campus visit 9 Jun for pain discovery. On-prem preferred (defense compliance).",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "Urban Air Mobility startup, Chakan. Drones (defense) + quadcopter EV vision. Acquired EV car design data (CATIA V5) from bankrupt US startup — modular platform (sedan/crossover/hatchback). No revision mgmt tool; ECR/ECM via Excel and email; no PM system. Phase 1: PDM + CHG + PM; 20–50 users TBC. On-prem preferred (defense; not open to public cloud). BridgeInstar (another DS partner) proposed private cloud — Shiv advised against (user count below minimum threshold). DS campus visit Hinjawadi 9 Jun — focus on quantifying pain, not demo. Push case."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-004",
+      "partner": "ALTEM",
+      "accountName": "Jrew Engineering",
+      "accountURL": null,
+      "city": "TBD",
+      "region": "TBD",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "ALTEM",
+      "brand": ["ENOVIA"],
+      "currentStatus": "On-Hold",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "On hold. Customer not available. No scope, requirements, or user count established.",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "Initial overview done. No scope/requirements/user count. Customer not confirmed for discovery meeting. Placed on hold — will revisit when customer shows intent."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-005",
+      "partner": "ALTEM",
+      "accountName": "Weldex",
+      "accountURL": null,
+      "city": "TBD",
+      "region": "TBD",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Yash Satpute",
+      "brand": ["3DEXPERIENCE 2024X"],
+      "currentStatus": "Completed",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": null,
+      "latestUpdate": "Active implementation. PCS + UEFI config in progress for CATIA V5 connection. Config error encountered — awaiting CATIA V5 UEFI docs from Akash (DS).",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "3DEXPERIENCE 2024X deployed and in active use. Customer confirmed readiness for CATIA VFi via PCS + UEFI. Admin PCS cleared. Yash doing client-side config — hitting config error; no documentation available for this specific scenario. Action: Yash to email Akash (DS) for CATIA V5 UEFI configuration docs."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-006",
+      "partner": "ALTEM",
+      "accountName": "Blue Hat",
+      "accountURL": null,
+      "city": "Bangalore",
+      "region": "South",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Yash Satpute",
+      "brand": ["3DEXPERIENCE 2026 FD02"],
+      "currentStatus": "Completed",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": null,
+      "latestUpdate": "Post-installation issue. 3DSpace Index down — consolidation port error. SR unresponsive 4–5 days. CRIT SIT to be raised. Escalate to Shiv if no response in 1–2 days.",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "3DEXPERIENCE 2026 FD02 deployed in 3 days. Post-install validation Day 2: 3DSpace Index stopped working — consolidation port error. KB search done (2 QA docs followed), SR raised, Akash consulted, SR reinstall done — issue persists. SR unresponsive 4–5 days. Customer escalating to Yash repeatedly. Action: raise CRIT SIT immediately; if no response in 1–2 days, email Shiv to loop in SR Management."
+        }
+      ]
+    },
+    {
+      "id": "ALTEM-007",
+      "partner": "ALTEM",
+      "accountName": "IAC",
+      "accountURL": "https://www.iacna.com",
+      "city": "TBD",
+      "region": "TBD",
+      "partnerSalesOwner": "TBD",
+      "techOwner": "Yash Satpute / Suraj Kadam",
+      "brand": ["3DEXPERIENCE"],
+      "currentStatus": "On-Hold",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": null,
+      "latestUpdate": "Partner ownership conflict: ALTEM + Solize + Minutus all active on same activity without clear ownership. ALTEM not to proceed until ownership and payment terms resolved.",
+      "lastDiscussed": "2026-06-08",
+      "sessions": [
+        {
+          "date": "2026-06-08",
+          "notes": "SQL DB on separate server confirmed intact. Three-party conflict: customer insisting ALTEM and Solize work simultaneously; Minutus also ready on SQL DB migration. Shiv flagged this as unacceptable. Solize confirmed readiness; escalation from IAC to Solize done. Shiv: only one partner can own services delivery. ALTEM must confirm formal engagement scope and payment terms before any work. Suraj committed to not proceeding without ownership resolution."
+        }
+      ]
+    },
+    {
+      "id": "EDS-001",
+      "partner": "EDS",
+      "accountName": "Mungi Engineers",
+      "accountURL": null,
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Ratnkant Sonawane",
+      "techOwner": "Panjab Borkar",
+      "brand": ["ENOVIA"],
+      "currentStatus": "On-Hold",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": "12.5L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "On hold. Customer expects custom Project Dashboards. Technical value proposal needed to build confidence on custom dashboard possibilities for Project Management.",
+      "lastDiscussed": "2026-06-02",
+      "sessions": [
+        {
+          "date": "2026-06-02",
+          "notes": "Not discussed this session. Background: Proposal submitted last quarter. MEPL team expecting custom Project Dashboards — technical value proposal needed to build confidence before re-engagement."
+        }
+      ]
+    },
+    {
+      "id": "EDS-002",
+      "partner": "EDS",
+      "accountName": "GB Rubber",
+      "accountURL": null,
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Tanaji Pawar",
+      "techOwner": "Panjab Borkar",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": "10L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "BPM solution proposed. Mr. Alok confirmed confidence in solution. Budget approval expected June 1st week. No technical blockers.",
+      "lastDiscussed": "2026-06-02",
+      "sessions": [
+        {
+          "date": "2026-06-02",
+          "notes": "BPM Solutions proposed; proposal submitted last quarter. Mr. Alok (Alok Gupta) confirmed confidence in the BPM solution. Budget approval expected by June 1st week — once confirmed, deal can be concluded. No technical blockers."
+        }
+      ]
+    },
+    {
+      "id": "EDS-003",
+      "partner": "EDS",
+      "accountName": "Mansons Intl Pvt Ltd",
+      "accountURL": null,
+      "city": "Mumbai",
+      "region": "West",
+      "partnerSalesOwner": "Kumar Aditya",
+      "techOwner": "Panjab Borkar",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": "35L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "OP",
+      "competition": "PTC Windchill",
+      "latestUpdate": "Budgetary proposal submitted; SBO approval pending DS side. Live Creo on-release demo scheduled 5 Jun. Critical blocker: Creo connector UEP+UDO installation pending on customer system.",
+      "lastDiscussed": "2026-06-02",
+      "sessions": [
+        {
+          "date": "2026-06-02",
+          "notes": "Proposal submitted; SBO approval pending DS side. Technical demo done — excellent feedback across the board. After Market team wants live Creo on-release demo (not recording). ~15 users in scope. Creo connector (UEP+UDO) installation on customer system is critical blocker for Thu 5 Jun demo. On-Release mode requires STS role license — Mr. Vinay confirmed release license available. Windchill 3-year subscription nearing expiry — active competitive evaluation."
+        }
+      ]
+    },
+    {
+      "id": "EDS-004",
+      "partner": "EDS",
+      "accountName": "Sellowrap Industries Pvt Ltd",
+      "accountURL": null,
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Ankesh Mathurkar",
+      "techOwner": "Panjab Borkar",
+      "brand": ["ENOVIA"],
+      "currentStatus": "POC",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": "30L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "OC",
+      "competition": null,
+      "latestUpdate": "4-process BPM architecture defined: CRM, RFQ Inquiry Register, RFQ Execution, APQP. BPM→DPM auto-trigger confirmed. DPM for project summary view; XPP for Director-facing dashboard. Commercial proposal after Director sign-off.",
+      "lastDiscussed": "2026-06-02",
+      "sessions": [
+        {
+          "date": "2026-06-02",
+          "notes": "POC ongoing. Scope: custom NPD PM + Sales/Marketing RFQ MIS Report. New progress: CRM process via BPM identified. 4-process BPM architecture validated: (1) CRM — sales forecast/budget; (2) RFQ Inquiry Register — Excel tracker migrated to platform; (3) RFQ Timeline/Execution; (4) APQP — template-based. BPM→DPM event trigger: Inquiry Register event auto-creates RFQ project in DPM from template. DPM selected for project summary (Shiv validated). XPP recommended for Director-facing prompt-based dashboard. Commercial proposal after Director POC sign-off."
+        }
+      ]
+    },
+    {
+      "id": "EDS-005",
+      "partner": "EDS",
+      "accountName": "Tropicool Autotronics Pvt Ltd",
+      "accountURL": null,
+      "city": "Pune",
+      "region": "West",
+      "partnerSalesOwner": "Ankesh Mathurkar",
+      "techOwner": "Panjab Borkar",
+      "brand": ["ENOVIA"],
+      "currentStatus": "Proposal",
+      "targetMonth": "Jun",
+      "targetYear": 2026,
+      "oppValue": "18.7L",
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": "Siemens Teamcenter",
+      "latestUpdate": "Proposal submitted. Mr. Redek returning ~10 Jun from Poland. Direct commercial proposal to be submitted on return. Customer acknowledged 3DEXPERIENCE capabilities and scalability.",
+      "lastDiscussed": "2026-06-02",
+      "sessions": [
+        {
+          "date": "2026-06-02",
+          "notes": "Proposal submitted last quarter. Mr. Redek (key stakeholder) was in Poland post-April; returning ~10 Jun. Background: prior hands-on experience with 3DEXPERIENCE (Europe) and Teamcenter — actively evaluating both. Mr. Redek acknowledged 3DEXPERIENCE has strong capabilities and good scalability. Industry: automotive add-ons (infotainment, USB chargers, vehicle accessories). Direct commercial proposal to be submitted on return."
+        }
+      ]
+    }
+  ],
+
+  "actionItems": [
+    {
+      "id": "TTL-20260519-001",
+      "partner": "TTL",
+      "accountName": "Varroc",
+      "accountId": "TTL-001",
+      "sessionDate": "2026-05-19",
+      "action": "Confirm Varroc Lightning Division workshop date",
+      "owner": "Soham Vader",
+      "deadline": "2026-05-22",
+      "status": "Closed"
+    },
+    {
+      "id": "TTL-20260519-002",
+      "partner": "TTL",
+      "accountName": "KSPG Automotive",
+      "accountId": "TTL-002",
+      "sessionDate": "2026-05-19",
+      "action": "Chase KSPG workshop scheduling via Sahil",
+      "owner": "Soham Vader",
+      "deadline": "2026-05-26",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260519-003",
+      "partner": "TTL",
+      "accountName": "Atlas Copco",
+      "accountId": "TTL-003",
+      "sessionDate": "2026-05-19",
+      "action": "Provide Atlas Copco engagement update",
+      "owner": "Soham Vader",
+      "deadline": "2026-05-26",
+      "status": "Closed"
+    },
+    {
+      "id": "TTL-20260519-004",
+      "partner": "TTL",
+      "accountName": "HUF India Pvt Ltd",
+      "accountId": "TTL-004",
+      "sessionDate": "2026-05-19",
+      "action": "Provide HUF India engagement update",
+      "owner": "Soham Vader",
+      "deadline": "2026-05-26",
+      "status": "Closed"
+    },
+    {
+      "id": "TTL-20260519-005",
+      "partner": "TTL",
+      "accountName": "Suspa",
+      "accountId": "TTL-005",
+      "sessionDate": "2026-05-19",
+      "action": "Visit Chennai — meet Mr. Sehru in person; Manoj online; agree improvement roadmap",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-05-30",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260519-006",
+      "partner": "TTL",
+      "accountName": "Teneco Automotive",
+      "accountId": "TTL-006",
+      "sessionDate": "2026-05-19",
+      "action": "Chase Teneco for demo/meeting slot confirmation",
+      "owner": "Prasanth Chowdary",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260519-007",
+      "partner": "TTL",
+      "accountName": "Grindwell Norton",
+      "accountId": "TTL-007",
+      "sessionDate": "2026-05-19",
+      "action": "Coordinate DS Dir Deepak–Grindwell management call via Rashakar",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-06-30",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260519-008",
+      "partner": "TTL",
+      "accountName": "Titan Engineering",
+      "accountId": "TTL-008",
+      "sessionDate": "2026-05-19",
+      "action": "Follow up with Titan Engineering to expedite NDA signing",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-05-22",
+      "status": "Closed"
+    },
+    {
+      "id": "TTL-20260519-009",
+      "partner": "TTL",
+      "accountName": "Titan Watches",
+      "accountId": "TTL-009",
+      "sessionDate": "2026-05-19",
+      "action": "Monitor management review; follow up if no response by 26 May",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-05-26",
+      "status": "Closed"
+    },
+    {
+      "id": "TTL-20260526-001",
+      "partner": "TTL",
+      "accountName": "Suspa",
+      "accountId": "TTL-005",
+      "sessionDate": "2026-05-26",
+      "action": "Meet Suspa — confirm go-forward engagement plan",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-05-30",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-002",
+      "partner": "TTL",
+      "accountName": "Teneco Automotive",
+      "accountId": "TTL-006",
+      "sessionDate": "2026-05-26",
+      "action": "Meet Teneco — align demo scope, requirements, timeline (NetWipes reuse)",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-05-30",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-003",
+      "partner": "TTL",
+      "accountName": "Grindwell Norton",
+      "accountId": "TTL-007",
+      "sessionDate": "2026-05-26",
+      "action": "Push Joe + Rashakar to trigger Deepak–Grindwell management call",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-06-01",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-004",
+      "partner": "TTL",
+      "accountName": "Titan Engineering",
+      "accountId": "TTL-008",
+      "sessionDate": "2026-05-26",
+      "action": "Complete DS legal NDA review; plan exploratory + demos by mid-June",
+      "owner": "Prasanth Chowdary",
+      "deadline": "2026-06-15",
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-005",
+      "partner": "TTL",
+      "accountName": "Titan Watches",
+      "accountId": "TTL-009",
+      "sessionDate": "2026-05-26",
+      "action": "Include Shiv in next high-level Titan Watches engagement call",
+      "owner": "Prasanth Chowdary",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-006",
+      "partner": "TTL",
+      "accountName": "Ushin",
+      "accountId": "TTL-010",
+      "sessionDate": "2026-05-26",
+      "action": "Share update from Ushin design manager meeting (27 May)",
+      "owner": "Amit Mitroo",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-007",
+      "partner": "TTL",
+      "accountName": "JBM Neel Metal",
+      "accountId": "TTL-011",
+      "sessionDate": "2026-05-26",
+      "action": "One more customer call — decide keep vs. remove from active pipeline",
+      "owner": "Amit Mitroo",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "TTL-20260526-008",
+      "partner": "TTL",
+      "accountName": "Polyplastic",
+      "accountId": "TTL-012",
+      "sessionDate": "2026-05-26",
+      "action": "Follow up on proposal — confirm acceptance and next steps",
+      "owner": "Amit Mitroo",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-001",
+      "partner": "ALTEM",
+      "accountName": "Tak Technologies",
+      "accountId": "ALTEM-001",
+      "sessionDate": "2026-06-08",
+      "action": "Obtain on-prem proposal submitted by Digpal; confirm scope and costing",
+      "owner": "Suraj Kadam",
+      "deadline": "2026-06-08",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-002",
+      "partner": "ALTEM",
+      "accountName": "Tak Technologies",
+      "accountId": "ALTEM-001",
+      "sessionDate": "2026-06-08",
+      "action": "Loop in Minutus for on-prem implementation scope and effort estimate",
+      "owner": "Suraj Kadam",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-003",
+      "partner": "ALTEM",
+      "accountName": "Tak Technologies",
+      "accountId": "ALTEM-001",
+      "sessionDate": "2026-06-08",
+      "action": "Get proposal status feedback from Abyss; relay to Shiv",
+      "owner": "Suraj Kadam",
+      "deadline": "2026-06-12",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-004",
+      "partner": "ALTEM",
+      "accountName": "Tak Technologies",
+      "accountId": "ALTEM-001",
+      "sessionDate": "2026-06-08",
+      "action": "Revisit BPW inclusion in on-cloud BOM before next proposal version",
+      "owner": "Suraj Kadam",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-005",
+      "partner": "ALTEM",
+      "accountName": "Nibe Limited",
+      "accountId": "ALTEM-002",
+      "sessionDate": "2026-06-08",
+      "action": "Schedule consultative discovery session with Manish Jha or Shiv present",
+      "owner": "Yash Satpute",
+      "deadline": "2026-06-15",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-006",
+      "partner": "ALTEM",
+      "accountName": "AirPace",
+      "accountId": "ALTEM-003",
+      "sessionDate": "2026-06-08",
+      "action": "DS campus visit 9 Jun — identify and quantify PLM pain point; do not demo",
+      "owner": "Yash Satpute",
+      "deadline": "2026-06-09",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-007",
+      "partner": "ALTEM",
+      "accountName": "AirPace",
+      "accountId": "ALTEM-003",
+      "sessionDate": "2026-06-08",
+      "action": "Post campus-visit update to Shiv: pain point identified, PLM need articulated",
+      "owner": "Yash Satpute",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-008",
+      "partner": "ALTEM",
+      "accountName": "Weldex",
+      "accountId": "ALTEM-005",
+      "sessionDate": "2026-06-08",
+      "action": "Email Akash (DS) requesting CATIA V5 UEFI configuration documentation",
+      "owner": "Yash Satpute",
+      "deadline": "2026-06-08",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-009",
+      "partner": "ALTEM",
+      "accountName": "Blue Hat",
+      "accountId": "ALTEM-006",
+      "sessionDate": "2026-06-08",
+      "action": "Raise CRIT SIT on SR for 3DSpace Index port error; escalate to Shiv if no response in 2 days",
+      "owner": "Yash Satpute",
+      "deadline": "2026-06-10",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-010",
+      "partner": "ALTEM",
+      "accountName": "IAC",
+      "accountId": "ALTEM-007",
+      "sessionDate": "2026-06-08",
+      "action": "Clarify partner ownership with CSNA — confirm ALTEM scope and payment terms before any work",
+      "owner": "Suraj Kadam",
+      "deadline": "2026-06-08",
+      "status": "Open"
+    },
+    {
+      "id": "ALTEM-20260608-011",
+      "partner": "ALTEM",
+      "accountName": "IAC",
+      "accountId": "ALTEM-007",
+      "sessionDate": "2026-06-08",
+      "action": "Loop in Minutus for SQL DB migration once ownership conflict is resolved",
+      "owner": "Suraj Kadam",
+      "deadline": null,
+      "status": "Open"
+    },
+    {
+      "id": "EDS-20260602-001",
+      "partner": "EDS",
+      "accountName": "Mansons Intl Pvt Ltd",
+      "accountId": "EDS-003",
+      "sessionDate": "2026-06-02",
+      "action": "Complete Creo connector UEP+UDO installation on Mansons customer system before Thu demo",
+      "owner": "Panjab Borkar",
+      "deadline": "2026-06-05",
+      "status": "Open"
+    },
+    {
+      "id": "EDS-20260602-002",
+      "partner": "EDS",
+      "accountName": "Mansons Intl Pvt Ltd",
+      "accountId": "EDS-003",
+      "sessionDate": "2026-06-02",
+      "action": "Execute Thu 5 Jun live Creo on-release demo — no technical issues",
+      "owner": "Panjab Borkar",
+      "deadline": "2026-06-05",
+      "status": "Open"
+    },
+    {
+      "id": "EDS-20260602-003",
+      "partner": "EDS",
+      "accountName": "Tropicool Autotronics Pvt Ltd",
+      "accountId": "EDS-005",
+      "sessionDate": "2026-06-02",
+      "action": "Submit direct commercial proposal on Mr. Redek's return (~10 Jun)",
+      "owner": "Panjab Borkar",
+      "deadline": "2026-06-10",
+      "status": "Open"
+    },
+    {
+      "id": "EDS-20260602-004",
+      "partner": "EDS",
+      "accountName": "Sellowrap Industries Pvt Ltd",
+      "accountId": "EDS-004",
+      "sessionDate": "2026-06-02",
+      "action": "Review Sellowrap BPM POC status and Director-level demo readiness with PanjabBorkar in Pune",
+      "owner": "Shiv Singh",
+      "deadline": "2026-06-04",
+      "status": "Open"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "_comment": "Delta JSON — single session output. User merges into master pipeline.json manually.",
+  "_rules": {
+    "oppValue": "String with unit suffix. INR = Lakhs e.g. '56L'. EUR = Thousands e.g. '10K'. Users = plain number e.g. '25'. null if TBD.",
+    "oppValueUOM": "INR | EUR | Users",
+    "deploymentModel": "OP | OC | ANY",
+    "currentStatus": "Qualification | Demo | POC | Proposal | Completed | Closed | On-Hold",
+    "targetMonth": "Short month name: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec. null if unknown.",
+    "targetYear": "4-digit number. null if unknown.",
+    "region": "North | South | East | West | TBD",
+    "actionStatus": "Open | Closed | In Progress",
+    "id_accounts": "Format: [PARTNER_ID]-NNN — user assigns final sequential ID on merge.",
+    "id_actions": "Format: [PARTNER_ID]-YYYYMMDD-NNN",
+    "accountURL": "Always null in delta. User fills in master JSON.",
+    "deadline": "ISO date YYYY-MM-DD. null if TBD or not stated."
+  },
+
+  "meta": {
+    "partner": "[PARTNER_ID]",
+    "partnerFullName": "[Partner Full Name]",
+    "sessionDate": "YYYY-MM-DD",
+    "generatedAt": "YYYY-MM-DD"
+  },
+
+  "accounts": [
+    {
+      "id": "[PARTNER_ID]-NNN",
+      "partner": "[PARTNER_ID]",
+      "accountName": "",
+      "accountURL": null,
+      "city": "",
+      "region": "",
+      "partnerSalesOwner": "",
+      "techOwner": "",
+      "brand": [],
+      "currentStatus": "",
+      "targetMonth": null,
+      "targetYear": null,
+      "oppValue": null,
+      "oppValueUOM": "INR",
+      "deploymentModel": "ANY",
+      "competition": null,
+      "latestUpdate": "",
+      "lastDiscussed": "YYYY-MM-DD",
+      "sessions": [
+        {
+          "date": "YYYY-MM-DD",
+          "notes": ""
+        }
+      ]
+    }
+  ],
+
+  "actionItems": [
+    {
+      "id": "[PARTNER_ID]-YYYYMMDD-NNN",
+      "partner": "[PARTNER_ID]",
+      "accountName": "",
+      "accountId": "[PARTNER_ID]-NNN",
+      "sessionDate": "YYYY-MM-DD",
+      "action": "",
+      "owner": "",
+      "deadline": null,
+      "status": "Open"
+    }
+  ]
+}
